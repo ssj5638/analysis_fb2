@@ -31,12 +31,12 @@ def preprocess_post(post):   # post 데이터를 전처리 // 비공개
     post['created_time'] = kst.strftime('%Y-%m-%d %H:%M:%S:')
 
 
-def crawling(pagename, since, until, fetch = True):   # 공개
+def crawling(base_url, pagename, since, until, access_token, fetch):   # 공개
     results = []
     filename = '%s/%s_%s_%s.joson' % (RESULT_DIRECTORY, pagename, since, until)  # 파일 경로/네임 지정
 
     if fetch:
-        for posts in api.fb_fetch_posts(pagename, since, until):
+        for posts in api.fb_fetch_posts(base_url, pagename, since, until, access_token):
             for post in posts:
                 preprocess_post(post)
 

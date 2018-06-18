@@ -6,7 +6,7 @@ from config import CONFIG
 if __name__ == '__main__':      # __name__ 내장 속성
     # 데이터 수집 (collection)
     for item in CONFIG['items']:
-        resultfile = collect.crawling(**item, fetch = False)        # 파일 name만 꺼내옴
+        resultfile = collect.crawling(**item, **CONFIG['common'])        # 파일 name만 꺼내옴
         item['resultfile'] = resultfile         # 데이터 분석에서 사용하기 위함
     #   collect.crawling(*item)
     #   collect.crawling("jtbcnews", '2017-01-01', '2017-12-31')

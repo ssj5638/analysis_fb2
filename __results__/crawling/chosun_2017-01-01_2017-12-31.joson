@@ -4095,10 +4095,10 @@
             "summary": {
                 "can_comment": true,
                 "order": "ranked",
-                "total_count": 153
+                "total_count": 152
             }
         },
-        "conut_comments": 153,
+        "conut_comments": 152,
         "conut_reactions": 0,
         "count_shares": 56,
         "created_time": "2017-09-05 22:30:01:",

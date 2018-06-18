@@ -3,19 +3,19 @@ import pytagcloud
 import matplotlib.pyplot as plt
 import collections
 
-RESULT_DIRECTORY = '__results__/visualization'
+# RESULT_DIRECTORY = '__results__/visualization'
 
 
-def wordcloud(filename, wordfreq):
+def wordcloud(filename, wordfreq, result_directory_v):
     taglist = pytagcloud.make_tags(wordfreq.items(), maxsize=80)
     # print(taglist)
-    save_filename = '%s/wordcloud_%s.jpg' % (RESULT_DIRECTORY, filename)
+    save_filename = '%s/wordcloud_%s.jpg' % (result_directory_v, filename)
     pytagcloud.create_tag_image(taglist, save_filename, size=(900, 600), fontname='Malgun', rectangular=False, background=(0, 0, 0))
 
 
 def graph_bar(title=None, xlabel=None, ylabel=None,
               showgrid=False, values=None, ticks=None,
-              filename=None, showgraph=True):
+              filename=None, showgraph=True, result_directory_v=''):
     fig, subplots = plt.subplots(1, 1)
     subplots.bar(range(len(values)), values, align='center')
 
@@ -40,13 +40,10 @@ def graph_bar(title=None, xlabel=None, ylabel=None,
     subplots.grid(showgrid)
 
     if filename is not None and isinstance(filename, str):
-        save_filename='%s/bar_%s.png' % (RESULT_DIRECTORY, filename)
+        save_filename='%s/bar_%s.png' % (result_directory_v, filename)
         plt.savefig(save_filename, dpi=400, bbox_inches='tight')
 
     # show graph
     if showgraph:
         plt.show()
 
-
-if os.path.exists(RESULT_DIRECTORY) is False:
-    os.mkdir(RESULT_DIRECTORY)

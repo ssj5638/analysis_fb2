@@ -2,8 +2,9 @@ import os
 import json
 from .api import api
 from datetime import datetime, timedelta
+from config import CONFIG
 
-RESULT_DIRECTORY = '__results__/crawling'
+# RESULT_DIRECTORY = '__results__/crawling'
 
 
 def preprocess_post(post):   # post 데이터를 전처리 // 비공개
@@ -31,9 +32,9 @@ def preprocess_post(post):   # post 데이터를 전처리 // 비공개
     post['created_time'] = kst.strftime('%Y-%m-%d %H:%M:%S:')
 
 
-def crawling(base_url, pagename, since, until, access_token, fetch):   # 공개
+def crawling(base_url, pagename, since, until, access_token, fetch, result_directory_c):   # 공개
     results = []
-    filename = '%s/%s_%s_%s.joson' % (RESULT_DIRECTORY, pagename, since, until)  # 파일 경로/네임 지정
+    filename = '%s/%s_%s_%s.joson' % (result_directory_c, pagename, since, until)  # 파일 경로/네임 지정
 
     if fetch:
         for posts in api.fb_fetch_posts(base_url, pagename, since, until, access_token):
@@ -51,7 +52,3 @@ def crawling(base_url, pagename, since, until, access_token, fetch):   # 공개
             outfile.write(json_string)
 
     return filename
-
-
-if os.path.exists(RESULT_DIRECTORY) is False:
-    os.makedirs(RESULT_DIRECTORY)

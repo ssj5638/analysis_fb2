@@ -19,6 +19,7 @@ def fb_name_to_id(base_url, pagename, access_token):            # ex) jtbcnews i
 
     return json_result.get('id')
 
+
 def fb_fetch_posts(base_url, pagename, since, until, access_token):        # 중요!!! crawler
     url = fb_gen_url(base_url=base_url, node=fb_name_to_id(base_url, pagename,  access_token) +"/posts",
                      fields='id,message,link,name,type,shares,reactions,created_time,comments.limit(0).summary(true).limit(0).summary(true)',

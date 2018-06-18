@@ -29,8 +29,9 @@ if __name__ == '__main__':      # __name__ 내장 속성
         count_m50 = dict(count.most_common(50))
 
         filename = '%s_%s_%s' % (item['pagename'], item['since'], item['until'])
-        visualize.wordcloud(filename, count_m50)
+        visualize.wordcloud(filename, count_m50, CONFIG['result_directory_v'])
         visualize.graph_bar(title='%s 빈도 분석' % (item['pagename']),
+                            result_directory_v=CONFIG['result_directory_v'],
                             xlabel='단어',
                             ylabel='빈도 수',
                             values=list(count_m50.values()),

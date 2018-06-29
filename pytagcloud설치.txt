@@ -17,3 +17,6 @@
         "ttf": "malgun.ttf",
         "web": "http://fonts.googleapis.com/css?family=malgun"
         }
+
+3. venv > Lib > matplotlib > mpl-data > matplotlibrc
+    font.family         : Malgun Gothic
